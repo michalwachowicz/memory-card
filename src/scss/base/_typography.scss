@@ -1,0 +1,40 @@
+$font-stack: (
+  "Cinzel Bold",
+  "Iowan Old Style",
+  "Apple Garamond",
+  "Baskerville",
+  "Times New Roman",
+  "Droid Serif",
+  "Times",
+  "Source Serif Pro",
+  serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol"
+);
+
+@font-face {
+  font-family: "Cinzel Bold";
+  src:
+    url(/src/assets/fonts/cinzel-bold.woff2) format("woff2"),
+    url(/src/assets/fonts/cinzel-bold.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: $font-stack;
+  font-weight: 700;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  font-size: 1rem;
+}
