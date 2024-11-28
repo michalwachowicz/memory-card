@@ -30,6 +30,13 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react/jsx-no-bind": "off",
+    "react/require-default-props": [
+      "error",
+      {
+        forbidDefaultForRequired: true,
+        functions: "defaultArguments", //Here
+      },
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
