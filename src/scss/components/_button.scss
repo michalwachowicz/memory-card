@@ -44,4 +44,55 @@
       padding: 1rem 2rem;
     }
   }
+
+  &-icon {
+    .btn-inner {
+      padding: 0.5rem;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+
+      @media (min-width: 760px) and (min-height: 500px) {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+
+    path {
+      fill: #b46a21;
+    }
+
+    &:hover,
+    &:active {
+      path {
+        fill: #000;
+      }
+    }
+  }
+
+  &-sound {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  &-sound-disabled {
+    .btn-inner {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 80%;
+        height: 2 * $thickness;
+        border-radius: 2 * $thickness;
+        top: 45%;
+        left: 10%;
+        transform: rotate(45deg);
+        background-color: #bb152d;
+      }
+    }
+  }
 }
