@@ -11,7 +11,7 @@ import background1080jpg from "@/Assets/images/background/background-1080.jpg";
 
 interface Props {
   opacity: number;
-  music: boolean;
+  music?: boolean;
 }
 
 const Background: React.FC<Props> = ({ opacity, music = false }) => {

@@ -19,7 +19,7 @@ const expectUrl = (url: string, value: string) => {
 
 describe("<Background />", () => {
   it("renders with the correct opacity", () => {
-    render(<Background opacity={0.5} music />);
+    render(<Background opacity={0.5} />);
 
     const backdrop = screen.getByTestId("backdrop");
     expect(backdrop).toHaveStyle({ opacity: 0.5 });
@@ -29,7 +29,7 @@ describe("<Background />", () => {
     const { rerender } = render(<Background opacity={0.5} music />);
     expect(screen.getByTestId("audio")).toBeInTheDocument();
 
-    rerender(<Background opacity={0.5} music={false} />);
+    rerender(<Background opacity={0.5} />);
     expect(screen.queryByTestId("audio")).not.toBeInTheDocument();
   });
 
@@ -41,7 +41,7 @@ describe("<Background />", () => {
   });
 
   it("renders correct video source based on screen size", () => {
-    render(<Background opacity={0.5} music />);
+    render(<Background opacity={0.5} />);
 
     const checkVideoSources = (video: HTMLVideoElement, fileName: string) => {
       expectUrl(video.poster, `${fileName}.jpg`);
