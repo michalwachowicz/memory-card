@@ -1,0 +1,30 @@
+.help {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: clamp(18rem, 90vw, 20rem);
+  bottom: calc(100% + 1rem);
+  right: 0;
+
+  &-section {
+    background-color: #886e37;
+    padding: 2px;
+    border: 1px solid #000;
+    font-size: 1.125rem;
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: #9f8868;
+      border: 1px solid #000;
+      padding: 1rem;
+    }
+
+    svg {
+      min-width: 3rem;
+      min-height: 3rem;
+    }
+  }
+}

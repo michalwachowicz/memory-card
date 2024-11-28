@@ -72,12 +72,6 @@
     }
   }
 
-  &-sound {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-  }
-
   &-sound-disabled {
     .btn-inner {
       position: relative;
@@ -94,5 +88,18 @@
         background-color: #bb152d;
       }
     }
+  }
+
+  &-help-container {
+    position: relative;
+  }
+
+  &s-settings {
+    display: flex;
+    gap: 2rem;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1;
   }
 }
