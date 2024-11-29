@@ -4,6 +4,8 @@ import cardsJson from "@/Assets/images/cards/cards.json";
 const webpModules = import.meta.glob("../assets/images/cards/**/*.webp");
 const jpgModules = import.meta.glob("../assets/images/cards/**/*.jpg");
 
+const formatModule = (module: string) => module.replace("../", "/src/");
+
 const getFrom = (
   record: Record<string, () => Promise<unknown>>,
   targetKey: string,
@@ -11,8 +13,8 @@ const getFrom = (
 
 const { [-1]: backCard, ...cards }: { [id: number]: Card } = cardsJson.reduce(
   (acc, { id, name, path }) => {
-    const webp = getFrom(webpModules, `${path}.webp`) || "";
-    const jpg = getFrom(jpgModules, `${path}.jpg`) || "";
+    const webp = formatModule(getFrom(webpModules, `${path}.webp`) || "");
+    const jpg = formatModule(getFrom(jpgModules, `${path}.jpg`) || "");
 
     acc[id] = { id, name, images: { webp, jpg } };
     return acc;
