@@ -1,0 +1,107 @@
+[
+  {
+    "id": -1,
+    "name": "Back",
+    "path": "back"
+  },
+  {
+    "id": 0,
+    "name": "Angoulême",
+    "path": "angouleme"
+  },
+  {
+    "id": 1,
+    "name": "Archgriffin",
+    "path": "archgriffin"
+  },
+  {
+    "id": 2,
+    "name": "Assire\nvar Anahid",
+    "path": "assire-var-anahid"
+  },
+  {
+    "id": 3,
+    "name": "Calanthe",
+    "path": "calanthe"
+  },
+  {
+    "id": 4,
+    "name": "Carlo Varese",
+    "path": "carlo-varese"
+  },
+  {
+    "id": 5,
+    "name": "Ciri",
+    "path": "ciri"
+  },
+  {
+    "id": 6,
+    "name": "Damned Sorceress",
+    "path": "damned-sorceress"
+  },
+  {
+    "id": 7,
+    "name": "Dandelion",
+    "path": "dandelion"
+  },
+  {
+    "id": 8,
+    "name": "Dettlaff van der Ereiten",
+    "path": "dettlaff-van-der-eretein"
+  },
+  {
+    "id": 9,
+    "name": "Sigismund Dijkstra",
+    "path": "dijkstra"
+  },
+  {
+    "id": 10,
+    "name": "Eredin\nBréacc Glas",
+    "path": "eredin"
+  },
+  {
+    "id": 11,
+    "name": "Geralt of Rivia",
+    "path": "geralt"
+  },
+  {
+    "id": 12,
+    "name": "Griffin",
+    "path": "griffin"
+  },
+  {
+    "id": 13,
+    "name": "Imlerith",
+    "path": "imlerith-sabbath"
+  },
+  {
+    "id": 14,
+    "name": "Knut\nthe Callous",
+    "path": "knut-the-callous"
+  },
+  {
+    "id": 15,
+    "name": "Olgierd\nvon Everec",
+    "path": "olgierd"
+  },
+  {
+    "id": 16,
+    "name": "Regis",
+    "path": "regis"
+  },
+  {
+    "id": 17,
+    "name": "Triss Merigold",
+    "path": "triss"
+  },
+  {
+    "id": 18,
+    "name": "Vandergrift",
+    "path": "vandergrift"
+  },
+  {
+    "id": 19,
+    "name": "Yennefer",
+    "path": "yennefer"
+  }
+]
