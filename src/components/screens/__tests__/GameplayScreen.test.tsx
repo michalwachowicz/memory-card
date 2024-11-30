@@ -31,6 +31,14 @@ vi.mock("@/Components/CardContainer", () => ({
   ),
 }));
 
+vi.mock("@/Components/buttons/LogoButton", () => ({
+  default: ({ onClick }: { onClick: () => void }) => (
+    <button type="button" onClick={onClick} data-testid="btn-logo">
+      Logo
+    </button>
+  ),
+}));
+
 describe("<GameplayScreen />", () => {
   beforeEach(() => {
     vi.useFakeTimers();
@@ -180,5 +188,17 @@ describe("<GameplayScreen />", () => {
 
     expect(fn).toHaveBeenCalledTimes(1);
     expect(fn).toHaveBeenCalledWith(false);
+  });
+
+  it("restarts the game on logo click", async () => {
+    const fn = vi.fn();
+    render(<GameplayScreen difficulty="easy" onRestart={fn} />);
+
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    await act(async () => {
+      await user.click(screen.getByTestId("btn-logo"));
+    });
+
+    expect(fn).toHaveBeenCalledTimes(1);
   });
 });

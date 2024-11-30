@@ -10,12 +10,14 @@ import Card from "../../types/Card";
 interface Props {
   initialHighScore?: number;
   difficulty: Difficulty;
+  onRestart?: () => void;
   onGameOver?: (win?: boolean) => void;
 }
 
 const GameplayScreen: React.FC<Props> = ({
   initialHighScore = 0,
   difficulty,
+  onRestart = () => {},
   onGameOver = () => {},
 }) => {
   const [flipped, setFlipped] = useState(true);
@@ -100,7 +102,7 @@ const GameplayScreen: React.FC<Props> = ({
   return (
     <div className="gameplay">
       <header className="gameplay-header">
-        <LogoButton />
+        <LogoButton onClick={onRestart} />
         <Scoreboard score={score} highScore={highScore} />
       </header>
       <div className="gameplay-main">
