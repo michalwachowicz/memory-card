@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Background from "@/Components/Background";
-import MainScreen from "@/Components/screens/MainScreen";
-import SettingsButtons from "@/Components/buttons/SettingsButtons";
+import GameWrapper from "@/Components/GameWrapper";
 
 const App = () => {
   const [sound, setSound] = useState(false);
@@ -13,8 +12,7 @@ const App = () => {
 
   return (
     <div>
-      <SettingsButtons soundOn={sound} onSoundToggle={toggleSound} />
-      <MainScreen />
+      <GameWrapper onSoundToggle={toggleSound} />
       <Background opacity={0.55} music={sound} />
     </div>
   );
