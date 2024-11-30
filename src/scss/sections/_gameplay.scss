@@ -1,0 +1,18 @@
+.gameplay {
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 260px;
+    gap: 2rem;
+    margin: 1.5rem auto 0;
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      max-width: initial;
+      margin: 1.5rem;
+    }
+  }
+}
