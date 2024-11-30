@@ -3,7 +3,7 @@ import Difficulty from "@/Assets/src/types/Difficulty";
 
 interface Props {
   label: string;
-  difficulty?: Difficulty | undefined;
+  difficulty?: Difficulty;
   onClick?: (difficulty?: Difficulty) => void;
 }
 
