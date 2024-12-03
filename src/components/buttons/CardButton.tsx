@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import Card from "../../types/Card";
 import { getBackCard } from "../../managers/cardManager";
 
@@ -21,7 +21,6 @@ const CardButton: React.FC<Props> = ({
   flipped = false,
   onClick = () => {},
 }) => {
-  const [size, setSize] = useState({ top: 0, left: 0, width: 0, height: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
 
   const clickHandler = () => {
@@ -30,27 +29,11 @@ const CardButton: React.FC<Props> = ({
   };
 
   useLayoutEffect(() => {
-    const updateSize = () => {
-      if (!cardRef.current) return;
-
-      const { top, left, width, height } =
-        cardRef.current.getBoundingClientRect();
-
-      setSize({ top, left, width, height });
-    };
-
-    updateSize();
-
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
-  }, [cardRef]);
-
-  useLayoutEffect(() => {
     const { current } = cardRef;
     if (!current) return () => {};
 
     const tiltCard = (e: MouseEvent) => {
-      const { top, left, width, height } = size;
+      const { top, left, width, height } = current.getBoundingClientRect();
       const { clientX, clientY } = e;
 
       const centerX = left + width / 2;
@@ -70,7 +53,7 @@ const CardButton: React.FC<Props> = ({
 
     current.addEventListener("mousemove", tiltCard);
     return () => current.removeEventListener("mousemove", tiltCard);
-  }, [flipped, size, cardRef]);
+  }, [flipped, cardRef]);
 
   useLayoutEffect(() => {
     const { current } = cardRef;
