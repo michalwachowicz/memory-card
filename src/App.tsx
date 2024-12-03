@@ -3,6 +3,7 @@ import Background from "@/Components/Background";
 import GameWrapper from "@/Components/GameWrapper";
 import LoadingScreen from "@/Components/screens/LoadingScreen";
 import { preloadCards } from "./managers/cardManager";
+import { preloadResults } from "./managers/gameResultManager";
 
 const App = () => {
   const [sound, setSound] = useState(false);
@@ -14,6 +15,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    preloadResults();
     preloadCards();
 
     const timeout = setTimeout(() => {
