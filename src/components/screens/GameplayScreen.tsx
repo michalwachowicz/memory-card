@@ -8,17 +8,19 @@ import Difficulty from "../../types/Difficulty";
 import Card from "../../types/Card";
 
 interface Props {
-  initialHighScore?: number;
+  highScore?: number;
   difficulty: Difficulty;
   onRestart?: () => void;
   onGameOver?: (win?: boolean) => void;
+  onUpdateHighScore?: (score?: number) => void;
 }
 
 const GameplayScreen: React.FC<Props> = ({
-  initialHighScore = 0,
+  highScore = 0,
   difficulty,
   onRestart = () => {},
   onGameOver = () => {},
+  onUpdateHighScore = () => {},
 }) => {
   const [flipped, setFlipped] = useState(true);
 
@@ -29,7 +31,6 @@ const GameplayScreen: React.FC<Props> = ({
   const [round, setRound] = useState(1);
   const [maxRounds, setMaxRounds] = useState(0);
 
-  const [highScore, setHighScore] = useState(initialHighScore);
   const [score, setScore] = useState(0);
 
   const reset = () => {
@@ -47,8 +48,7 @@ const GameplayScreen: React.FC<Props> = ({
   };
 
   const updateHighScore = (newScore: number) => {
-    setHighScore(newScore);
-    localStorage.setItem("highScore", `${newScore}`);
+    onUpdateHighScore(newScore);
   };
 
   const handleCardClick = (id?: number) => {

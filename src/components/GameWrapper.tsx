@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SettingsButtons from "@/Components/buttons/SettingsButtons";
 import GameplayScreen from "@/Components/screens/GameplayScreen";
 import MainScreen from "@/Components/screens/MainScreen";
@@ -14,6 +14,7 @@ const GameWrapper: React.FC<Props> = ({
   sound = false,
   onSoundToggle = () => {},
 }) => {
+  const [highScore, setHighScore] = useState(0);
   const [result, setResult] = useState<"victory" | "defeat">("victory");
   const [screen, setScreen] = useState<"main" | "game" | "result">("main");
   const [difficulty, setDifficulty] = useState<Difficulty>("easy");
@@ -36,6 +37,17 @@ const GameWrapper: React.FC<Props> = ({
     setScreen("main");
   };
 
+  const handleUpdateHighScore = (newScore?: number) => {
+    if (newScore === undefined) return;
+
+    localStorage.setItem("highScore", `${newScore}`);
+    setHighScore(newScore);
+  };
+
+  useEffect(() => {
+    setHighScore(parseInt(localStorage.getItem("highScore") || "0", 10));
+  }, []);
+
   return (
     <div className="game-wrapper">
       {screen === "main" && (
@@ -43,9 +55,11 @@ const GameWrapper: React.FC<Props> = ({
       )}
       {screen === "game" && (
         <GameplayScreen
+          highScore={highScore}
           difficulty={difficulty}
           onRestart={handleRestart}
           onGameOver={handleGameOver}
+          onUpdateHighScore={handleUpdateHighScore}
         />
       )}
       {screen === "result" && (

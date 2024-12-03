@@ -54,22 +54,24 @@ describe("<GameplayScreen />", () => {
 
   it("renders with proper initial values", () => {
     const { rerender } = render(
-      <GameplayScreen difficulty="easy" initialHighScore={4} />,
+      <GameplayScreen difficulty="easy" highScore={4} />,
     );
 
     expect(screen.getByText(/high score: 4/i)).toBeInTheDocument();
     expect(screen.getByText(/^score: 0/i)).toBeInTheDocument();
     expect(screen.getByText(/1 \/ 6/i)).toBeInTheDocument();
 
-    rerender(<GameplayScreen difficulty="medium" initialHighScore={2} />);
+    rerender(<GameplayScreen difficulty="medium" highScore={2} />);
 
-    expect(screen.getByText(/high score: 4/i)).toBeInTheDocument();
+    expect(screen.getByText(/high score: 2/i)).toBeInTheDocument();
     expect(screen.getByText(/^score: 0/i)).toBeInTheDocument();
     expect(screen.getByText(/1 \/ 8/i)).toBeInTheDocument();
   });
 
   it("increases values on card click", async () => {
-    render(<GameplayScreen difficulty="easy" />);
+    const fn = vi.fn();
+    render(<GameplayScreen difficulty="easy" onUpdateHighScore={fn} />);
+
     expect(screen.getByText(/high score: 0/i)).toBeInTheDocument();
     expect(screen.getByText(/^score: 0/i)).toBeInTheDocument();
     expect(screen.getByText(/1 \/ 6/i)).toBeInTheDocument();
@@ -79,13 +81,19 @@ describe("<GameplayScreen />", () => {
       await user.click(screen.getAllByTestId("card")[0]);
     });
 
-    expect(screen.getByText(/high score: 1/i)).toBeInTheDocument();
+    expect(fn).toHaveBeenCalledTimes(1);
+    expect(fn).toHaveBeenCalledWith(1);
+
     expect(screen.getByText(/^score: 1/i)).toBeInTheDocument();
     expect(screen.getByText(/2 \/ 6/i)).toBeInTheDocument();
   });
 
   it("increases only score if high score is bigger", async () => {
-    render(<GameplayScreen difficulty="easy" initialHighScore={2} />);
+    const fn = vi.fn();
+    render(
+      <GameplayScreen difficulty="easy" onUpdateHighScore={fn} highScore={2} />,
+    );
+
     expect(screen.getByText(/high score: 2/i)).toBeInTheDocument();
     expect(screen.getByText(/^score: 0/i)).toBeInTheDocument();
     expect(screen.getByText(/1 \/ 6/i)).toBeInTheDocument();
@@ -95,7 +103,7 @@ describe("<GameplayScreen />", () => {
       await user.click(screen.getAllByTestId("card")[0]);
     });
 
-    expect(screen.getByText(/high score: 2/i)).toBeInTheDocument();
+    expect(fn).toHaveBeenCalledTimes(0);
     expect(screen.getByText(/^score: 1/i)).toBeInTheDocument();
     expect(screen.getByText(/2 \/ 6/i)).toBeInTheDocument();
   });
