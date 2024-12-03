@@ -5,7 +5,7 @@
     align-items: center;
     max-width: 260px;
     gap: 2rem;
-    margin: 1.5rem auto 0;
+    margin: 1.5rem auto;
 
     @media (min-width: 600px) {
       flex-direction: row;
@@ -14,17 +14,21 @@
       max-width: initial;
       margin: 1.5rem;
     }
+
+    @media (min-width: 900px) and (min-height: 900px) {
+      margin: 1.5rem 1.5rem 25vh;
+    }
   }
 
   &-round {
     color: #fff;
     font-size: 1.5rem;
-    margin: 1.5rem auto 0;
+    margin: 1.5rem auto 7rem;
     text-align: center;
 
     @media (min-width: 800px) and (min-height: 500px) {
       font-size: 2rem;
-      margin: 2rem auto 0;
+      margin: 2rem auto 7rem;
     }
   }
 }
