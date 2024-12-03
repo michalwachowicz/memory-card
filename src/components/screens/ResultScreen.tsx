@@ -36,7 +36,7 @@ const ResultScreen: React.FC<Props> = ({
       type="button"
       onClick={onRestart}
     >
-      Restart
+      <div className="btn-inner">Restart</div>
     </button>
   </div>
 );
