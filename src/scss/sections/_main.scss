@@ -19,6 +19,7 @@
     max-width: 32rem;
     height: auto;
     width: 100%;
+    animation: popup 0.5s ease-out forwards;
 
     @media (orientation: landscape) and (max-height: 430px) {
       max-width: 22rem;
@@ -31,6 +32,7 @@
     align-items: center;
     gap: 2rem;
     margin: 2.5rem auto 0;
+    animation: popup 0.5s ease-out forwards;
 
     @media (min-width: 570px) {
       flex-direction: row;

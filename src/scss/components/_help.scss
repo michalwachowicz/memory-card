@@ -6,6 +6,8 @@
   width: clamp(18rem, 90vw, 20rem);
   bottom: calc(100% + 1rem);
   right: 0;
+  animation: popup 0.3s ease-out forwards;
+  transform-origin: bottom right;
 
   &-section {
     background-color: #886e37;

@@ -7,6 +7,7 @@
   height: 100vh;
   gap: 2rem;
   padding: 1.5rem;
+  animation: popup 0.5s ease-out forwards;
 
   &-img {
     width: clamp(100px, 85vh, 860px);
