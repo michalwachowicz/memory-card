@@ -16,17 +16,21 @@ vi.mock("@/Components/CardContainer", () => ({
     onClick: (id?: number) => void;
   }) => (
     <div data-testid="cards">
-      {cards.map((card) => (
-        <button
-          type="button"
-          onClick={() => onClick(card.id)}
-          key={card.id}
-          data-testid="card"
-          data-id={card.id}
-        >
-          {flipped ? "flipped" : card.name}
-        </button>
-      ))}
+      {cards.map(
+        (card) =>
+          card &&
+          card.id && (
+            <button
+              type="button"
+              onClick={() => onClick(card.id)}
+              key={card.id}
+              data-testid="card"
+              data-id={card.id}
+            >
+              {flipped ? "flipped" : card.name}
+            </button>
+          ),
+      )}
     </div>
   ),
 }));
