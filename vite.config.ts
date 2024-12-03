@@ -12,4 +12,5 @@ export default defineConfig({
       { find: "@/Components", replacement: "/src/components" },
     ],
   },
+  assetsInclude: ["**/*.webp", "**/*.jpg"],
 });
