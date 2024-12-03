@@ -75,7 +75,9 @@ const GameplayScreen: React.FC<Props> = ({
     const newClickedCards = [...clickedCards, id];
 
     setClickedCards(newClickedCards);
-    setCards(getNextRoundCards(newClickedCards, cardsSize));
+    setTimeout(() => {
+      setCards(getNextRoundCards(clickedCards, cardsSize));
+    }, 650);
     setRound((prevRound) => prevRound + 1);
   };
 
