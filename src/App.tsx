@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <div>
-      <GameWrapper onSoundToggle={toggleSound} />
+      <GameWrapper sound={sound} onSoundToggle={toggleSound} />
       <Background opacity={0.55} music={sound} />
     </div>
   );
