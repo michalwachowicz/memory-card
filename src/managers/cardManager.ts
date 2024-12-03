@@ -1,5 +1,6 @@
 import Card from "../types/Card";
 import cardsJson from "@/Assets/images/cards/cards.json";
+import formatModule from "../utils/moduleFormatter";
 
 const webpModules = import.meta.glob("../assets/images/cards/**/*.webp", {
   eager: true,
@@ -7,14 +8,6 @@ const webpModules = import.meta.glob("../assets/images/cards/**/*.webp", {
 const jpgModules = import.meta.glob("../assets/images/cards/**/*.jpg", {
   eager: true,
 });
-
-const formatModule = (module: Record<string, unknown>, targetKey: string) => {
-  const match = Object.keys(module).find((key) =>
-    key.endsWith(`/${targetKey}`),
-  );
-
-  return match ? (module[match] as { default: string }).default : "";
-};
 
 const { [-1]: backCard, ...cards }: { [id: number]: Card } = cardsJson.reduce(
   (acc, { id, name, path }) => {
