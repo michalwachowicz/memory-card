@@ -1,0 +1,14 @@
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  gap: 2rem;
+  padding: 1.5rem;
+
+  &-img {
+    width: clamp(100px, 85vh, 860px);
+  }
+}
