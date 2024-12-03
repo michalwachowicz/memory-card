@@ -9,7 +9,7 @@ const formatModule = (module: string) => module.replace("../", "/src/");
 const getFrom = (
   record: Record<string, () => Promise<unknown>>,
   targetKey: string,
-) => Object.keys(record).find((key) => key.endsWith(targetKey));
+) => Object.keys(record).find((key) => key.endsWith(`/${targetKey}`));
 
 const { [-1]: backCard, ...cards }: { [id: number]: Card } = cardsJson.reduce(
   (acc, { id, name, path }) => {
