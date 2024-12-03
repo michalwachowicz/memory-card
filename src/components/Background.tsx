@@ -67,6 +67,7 @@ const Background: React.FC<Props> = ({ opacity, music = false }) => {
         data-testid="video"
         className="background-video"
         poster={variant.poster}
+        preload="metadata"
         autoPlay
         muted
         loop
