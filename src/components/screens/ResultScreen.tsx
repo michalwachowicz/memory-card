@@ -1,10 +1,5 @@
 import React from "react";
-
-import victoryPng from "@/Assets/images/game-results/victory/victory.png";
-import victoryWebp from "@/Assets/images/game-results/victory/victory.webp";
-
-import defeatPng from "@/Assets/images/game-results/defeat/defeat.png";
-import defeatWebp from "@/Assets/images/game-results/defeat/defeat.webp";
+import { getResult } from "../../managers/gameResultManager";
 
 interface Props {
   result?: "victory" | "defeat";
@@ -14,31 +9,29 @@ interface Props {
 const ResultScreen: React.FC<Props> = ({
   result = "victory",
   onRestart = () => {},
-}) => (
-  <div className="result">
-    <picture>
-      <source
-        src={result === "defeat" ? defeatWebp : victoryWebp}
-        type="image/webp"
-      />
-      <source
-        src={result === "defeat" ? defeatPng : victoryPng}
-        type="image/png"
-      />
-      <img
-        className="result-img"
-        src={result === "defeat" ? defeatWebp : victoryWebp}
-        alt={result === "defeat" ? "Defeat" : "Victory"}
-      />
-    </picture>
-    <button
-      className="btn btn-game btn-result"
-      type="button"
-      onClick={onRestart}
-    >
-      <div className="btn-inner">Restart</div>
-    </button>
-  </div>
-);
+}) => {
+  const { webp, png } = getResult(result);
+
+  return (
+    <div className="result">
+      <picture>
+        <source src={webp} type="image/webp" />
+        <source src={png} type="image/png" />
+        <img
+          className="result-img"
+          src={png}
+          alt={result === "defeat" ? "Defeat" : "Victory"}
+        />
+      </picture>
+      <button
+        className="btn btn-game btn-result"
+        type="button"
+        onClick={onRestart}
+      >
+        <div className="btn-inner">Restart</div>
+      </button>
+    </div>
+  );
+};
 
 export default ResultScreen;
