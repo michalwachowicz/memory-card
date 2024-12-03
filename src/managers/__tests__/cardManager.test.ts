@@ -78,6 +78,16 @@ describe("cardManager", () => {
         newCards.filter((card) => !clickedCards.includes(card.id)),
       ).toHaveLength(0);
     });
+
+    it("does not return undefined cards", () => {
+      const clickedCards = [0, 1, 2];
+      const newCards = getNextRoundCards(clickedCards, 8);
+
+      newCards.forEach((card) => {
+        expect(card).toBeDefined();
+        expect(card.id).toBeDefined();
+      });
+    });
   });
 
   describe("getCardById", () => {

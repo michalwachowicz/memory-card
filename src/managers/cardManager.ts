@@ -54,15 +54,17 @@ const getNextRoundCards = (clickedCards: number[], length: number): Card[] => {
         ? Math.floor(Math.random() * (0.25 * clickedCards.length + 1)) + 1
         : length - newCards.length;
 
-    const availableClickedCards = [...clickedCards];
-    shuffle(availableClickedCards);
-
+    const availableClickedCards = shuffle([...clickedCards]) as number[];
     for (let i = 0; i < randomCardsCount; i += 1) {
-      selectedClickedCards.push(getCardById(availableClickedCards[i]));
+      const selectedCard = getCardById(availableClickedCards[i]);
+      if (selectedCard) selectedClickedCards.push(selectedCard);
     }
   }
 
-  const finalCards = [...selectedClickedCards, ...newCards].slice(0, length);
+  const finalCards = [...selectedClickedCards, ...newCards]
+    .filter((card) => card !== undefined)
+    .slice(0, length);
+
   return shuffle(finalCards) as Card[];
 };
 

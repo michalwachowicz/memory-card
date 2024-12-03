@@ -14,14 +14,18 @@ const CardContainer: React.FC<Props> = ({
   onClick = () => {},
 }) => (
   <div className="card-container">
-    {cards.map((card) => (
-      <CardButton
-        data={card}
-        key={card.id}
-        flipped={flipped}
-        onClick={onClick}
-      />
-    ))}
+    {cards.map(
+      (card) =>
+        card &&
+        card.id !== undefined && (
+          <CardButton
+            data={card}
+            key={card.id}
+            flipped={flipped}
+            onClick={onClick}
+          />
+        ),
+    )}
   </div>
 );
 

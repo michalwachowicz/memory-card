@@ -73,10 +73,11 @@ const GameplayScreen: React.FC<Props> = ({
     }
 
     const newClickedCards = [...clickedCards, id];
+    const nextRoundCards = getNextRoundCards(newClickedCards, cardsSize);
 
     setClickedCards(newClickedCards);
     setTimeout(() => {
-      setCards(getNextRoundCards(clickedCards, cardsSize));
+      setCards(nextRoundCards);
     }, 650);
     setRound((prevRound) => prevRound + 1);
   };
@@ -84,9 +85,10 @@ const GameplayScreen: React.FC<Props> = ({
   useEffect(() => {
     const newCardsSize =
       difficulty === "hard" ? 8 : difficulty === "medium" ? 6 : 4;
+    const nextRoundCards = getNextRoundCards([], newCardsSize);
 
     setCardsSize(newCardsSize);
-    setCards(getNextRoundCards([], newCardsSize));
+    setCards(nextRoundCards);
 
     setMaxRounds(difficulty === "hard" ? 10 : difficulty === "medium" ? 8 : 6);
   }, [difficulty]);
