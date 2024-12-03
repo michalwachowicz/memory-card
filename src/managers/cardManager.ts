@@ -51,7 +51,7 @@ const getNextRoundCards = (clickedCards: number[], length: number): Card[] => {
   if (clickedCards.length > 0) {
     const randomCardsCount =
       newCards.length >= length
-        ? Math.floor(Math.random() * (0.25 * clickedCards.length + 1))
+        ? Math.floor(Math.random() * (0.25 * clickedCards.length + 1)) + 1
         : length - newCards.length;
 
     const availableClickedCards = [...clickedCards];

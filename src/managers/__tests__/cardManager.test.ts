@@ -39,13 +39,16 @@ describe("cardManager", () => {
       });
     });
 
-    it("includes 0 to 25% of clicked cards randomly", () => {
+    it("includes 1 card to 25% of clicked cards randomly", () => {
       const clickedCards = [0, 1, 2];
       const newCards = getNextRoundCards(clickedCards, 8);
 
-      expect(
-        newCards.filter((card) => clickedCards.includes(card.id)).length,
-      ).toBeLessThanOrEqual(2);
+      const clickedCount = newCards.filter((card) =>
+        clickedCards.includes(card.id),
+      ).length;
+
+      expect(clickedCount).toBeLessThanOrEqual(2);
+      expect(clickedCount).toBeGreaterThanOrEqual(1);
     });
 
     it("includes more clicked cards if number of remaining cards deficient", () => {
