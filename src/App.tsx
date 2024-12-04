@@ -28,9 +28,7 @@ const App = () => {
   return (
     <div>
       {loading && <LoadingScreen />}
-      {!loading && (
-        <GameWrapper sound={sound} onSoundToggle={toggleSound} />
-      )};
+      {!loading && <GameWrapper sound={sound} onSoundToggle={toggleSound} />}
       <Background opacity={loading ? 0.9 : 0.55} music={sound} />
     </div>
   );
